@@ -17,9 +17,7 @@ services:
           name: rewardshub-db
           property: connectionString
       - key: NODE_VERSION
-        value: 22.11.0
-      - key: NODE_ENV
-        value: production
+        value: 22.14.0
       - key: JWT_ACCESS_TTL_SECONDS
         value: "900"
       - key: JWT_REFRESH_TTL_SECONDS
