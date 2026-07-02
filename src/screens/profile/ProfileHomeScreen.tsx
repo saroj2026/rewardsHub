@@ -1,33 +1,35 @@
 import { useCallback, useState } from "react";
-import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { useFocusEffect, useNavigation, CommonActions } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 import type { CompositeNavigationProp } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { colors } from "../theme/colors";
-import { getUserCards } from "../lib/api-client";
-import { clearSession } from "../lib/session";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { signedOut } from "../store/slices/userSlice";
-import { ScreenHeader } from "../components/ScreenHeader";
-import type { MainTabParamList, RootStackParamList } from "../navigation/types";
+import { colors } from "../../theme/colors";
+import { getUserCards } from "../../lib/api-client";
+import { clearSession } from "../../lib/session";
+import { getPremiumActive } from "../../lib/premium";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { signedOut } from "../../store/slices/userSlice";
+import { ScreenHeader } from "../../components/ScreenHeader";
+import type { MainTabParamList, ProfileStackParamList, RootStackParamList } from "../../navigation/types";
 
 type Nav = CompositeNavigationProp<
-  BottomTabNavigationProp<MainTabParamList, "Profile">,
-  NativeStackNavigationProp<RootStackParamList>
+  NativeStackNavigationProp<ProfileStackParamList, "ProfileHome">,
+  CompositeNavigationProp<BottomTabNavigationProp<MainTabParamList>, NativeStackNavigationProp<RootStackParamList>>
 >;
 
-export function ProfileScreen() {
+export function ProfileHomeScreen() {
   const navigation = useNavigation<Nav>();
   const dispatch = useAppDispatch();
   const user = useAppSelector((s) => s.user.current);
-  const [premiumActive, setPremiumActive] = useState(false);
+  const [premiumActive, setPremiumActiveState] = useState(false);
   const [cardCount, setCardCount] = useState(0);
 
   useFocusEffect(
     useCallback(() => {
+      getPremiumActive().then(setPremiumActiveState);
       if (!user?.id) {
         setCardCount(0);
         return;
@@ -43,11 +45,11 @@ export function ProfileScreen() {
 
   const rows: { icon: keyof typeof Feather.glyphMap; label: string; value?: string; onPress: () => void }[] = [
     { icon: "credit-card", label: "Linked Cards", value: user ? `${cardCount} active` : undefined, onPress: () => navigation.navigate("Cards", { screen: "CardsList" }) },
-    { icon: "bar-chart-2", label: "Analytics", onPress: () => Alert.alert("Analytics", "Coming soon.") },
-    { icon: "bell", label: "Alerts & Reminders", value: "On", onPress: () => Alert.alert("Alerts", "Coming soon.") },
-    { icon: "users", label: "Family Circle", onPress: () => Alert.alert("Family Circle", "Coming soon.") },
-    { icon: "shield", label: "Privacy & Security", value: "Lock off", onPress: () => Alert.alert("Privacy & Security", "Coming soon.") },
-    { icon: "life-buoy", label: "Help & Support", onPress: () => Alert.alert("Help & Support", "Coming soon.") },
+    { icon: "bar-chart-2", label: "Analytics", onPress: () => navigation.navigate("Profile", { screen: "Analytics" }) },
+    { icon: "bell", label: "Alerts & Reminders", value: "On", onPress: () => navigation.navigate("Profile", { screen: "Permissions" }) },
+    { icon: "users", label: "Family Circle", onPress: () => navigation.navigate("Profile", { screen: "Family" }) },
+    { icon: "shield", label: "Privacy & Security", onPress: () => navigation.navigate("Profile", { screen: "Security" }) },
+    { icon: "life-buoy", label: "Help & Support", onPress: () => navigation.navigate("Profile", { screen: "Help" }) },
   ];
 
   const handleSignOut = async () => {
@@ -86,7 +88,7 @@ export function ProfileScreen() {
                 <Text style={styles.premiumActiveText}>Premium Active</Text>
               </View>
             ) : (
-              <Pressable style={styles.premiumCta} onPress={() => setPremiumActive(true)}>
+              <Pressable style={styles.premiumCta} onPress={() => navigation.navigate("Profile", { screen: "Plans" })}>
                 <Text style={styles.premiumCtaText}>View plans</Text>
               </Pressable>
             )}

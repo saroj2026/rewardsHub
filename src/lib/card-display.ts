@@ -2,13 +2,7 @@
 // curated visual theme) into the shape `CreditCardVisual` renders.
 import type { Card } from "./api-client";
 import type { CardFace } from "../components/CreditCardVisual";
-
-const NETWORK_TINTS: Record<string, string> = {
-  visa: "#26262c",
-  mastercard: "#3a0016",
-  rupay: "#1c2530",
-  amex: "#3d3d3d",
-};
+import { cardTintForIssuer } from "./card-colors";
 
 export function sumActivePoints(card: Card): number {
   return card.pointBalances
@@ -42,6 +36,6 @@ export function toCardFace(card: Card): CardFace {
     tier: card.cardProduct.cardType.toUpperCase(),
     last4: card.id.slice(-4).toUpperCase(),
     points: sumActivePoints(card),
-    tint: NETWORK_TINTS[card.cardProduct.network] ?? NETWORK_TINTS.visa,
+    tint: cardTintForIssuer(card.cardProduct.issuer),
   };
 }

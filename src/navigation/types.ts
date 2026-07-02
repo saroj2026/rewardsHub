@@ -12,12 +12,23 @@ export type OffersStackParamList = {
   OfferDetail: { offer: Offer };
 };
 
+export type ProfileStackParamList = {
+  ProfileHome: undefined;
+  Plans: undefined;
+  Checkout: { plan: string; months: number; price: number };
+  Family: undefined;
+  Security: undefined;
+  Help: undefined;
+  Analytics: undefined;
+  Permissions: undefined;
+};
+
 export type MainTabParamList = {
   Home: undefined;
   Cards: NavigatorScreenParams<CardsStackParamList>;
   Offers: NavigatorScreenParams<OffersStackParamList>;
   AI: undefined;
-  Profile: undefined;
+  Profile: NavigatorScreenParams<ProfileStackParamList>;
 };
 
 export type RootStackParamList = {

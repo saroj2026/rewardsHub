@@ -3,7 +3,7 @@ import { HomeScreen } from "../screens/HomeScreen";
 import { CardsStack } from "./CardsStack";
 import { OffersStack } from "./OffersStack";
 import { AssistantScreen } from "../screens/AssistantScreen";
-import { ProfileScreen } from "../screens/ProfileScreen";
+import { ProfileStack } from "./ProfileStack";
 import { BottomTabBar } from "./BottomTabBar";
 import type { MainTabParamList } from "./types";
 
@@ -19,7 +19,7 @@ export function MainTabs() {
       <Tab.Screen name="Cards" component={CardsStack} />
       <Tab.Screen name="Offers" component={OffersStack} />
       <Tab.Screen name="AI" component={AssistantScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Profile" component={ProfileStack} />
     </Tab.Navigator>
   );
 }

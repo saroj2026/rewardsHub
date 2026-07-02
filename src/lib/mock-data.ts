@@ -281,3 +281,19 @@ export function recommendCard(query: string): { card: CardData; merchant: Mercha
   if (!card) return null;
   return { card, merchant };
 }
+
+export type FamilyMember = {
+  id: string;
+  name: string;
+  initials: string;
+  relation: string;
+  role: "Owner" | "Member";
+  pooledValue: number;
+  sharedCards: number;
+};
+
+export const familyMembers: FamilyMember[] = [
+  { id: "you", name: "You", initials: "ME", relation: "You", role: "Owner", pooledValue: 68420, sharedCards: 4 },
+  { id: "priya", name: "Priya", initials: "PK", relation: "Spouse", role: "Member", pooledValue: 24100, sharedCards: 2 },
+  { id: "rohan", name: "Rohan", initials: "RK", relation: "Son", role: "Member", pooledValue: 3200, sharedCards: 1 },
+];
