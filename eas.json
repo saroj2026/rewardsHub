@@ -16,6 +16,9 @@
     },
     "preview": {
       "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://rewardshub-backend.onrender.com"
+      },
       "ios": {
         "simulator": false
       },

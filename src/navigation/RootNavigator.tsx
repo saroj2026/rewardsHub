@@ -1,13 +1,13 @@
 import { NavigationContainer, DarkTheme, type Theme } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { colors } from "../theme/colors";
-import { HomeScreen } from "../screens/HomeScreen";
-import { CardsScreen } from "../screens/CardsScreen";
-import { OffersScreen } from "../screens/OffersScreen";
-import { AssistantScreen } from "../screens/AssistantScreen";
-import { ProfileScreen } from "../screens/ProfileScreen";
+import { SplashScreen } from "../screens/SplashScreen";
+import { OnboardingScreen } from "../screens/OnboardingScreen";
+import { SignInScreen } from "../screens/SignInScreen";
+import { MainTabs } from "./MainTabs";
+import type { RootStackParamList } from "./types";
 
-const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const navigationTheme: Theme = {
   ...DarkTheme,
@@ -24,21 +24,12 @@ const navigationTheme: Theme = {
 export function RootNavigator() {
   return (
     <NavigationContainer theme={navigationTheme}>
-      <Tab.Navigator
-        screenOptions={{
-          headerStyle: { backgroundColor: colors.surface },
-          headerTintColor: colors.foreground,
-          tabBarStyle: { backgroundColor: colors.surface, borderTopColor: colors.border },
-          tabBarActiveTintColor: colors.highlight,
-          tabBarInactiveTintColor: colors.mutedForeground,
-        }}
-      >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Cards" component={CardsScreen} />
-        <Tab.Screen name="Offers" component={OffersScreen} />
-        <Tab.Screen name="AI" component={AssistantScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-      </Tab.Navigator>
+      <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Splash" component={SplashScreen} />
+        <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+        <Stack.Screen name="SignIn" component={SignInScreen} />
+        <Stack.Screen name="Main" component={MainTabs} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

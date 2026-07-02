@@ -1,0 +1,25 @@
+name: Build Android and Distribute to Firebase
+
+jobs:
+  build_android:
+    type: build
+    params:
+      platform: android
+      profile: development
+
+  distribute_firebase:
+    name: Distribute to Firebase App Distribution
+    needs: [build_android]
+    environment: development
+    steps:
+      - uses: eas/download_build
+        id: download
+        with:
+          build_id: ${{ needs.build_android.outputs.build_id }}
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+      - name: Upload to Firebase App Distribution
+        run: |
+          firebase appdistribution:distribute "${{ steps.download.outputs.artifact_path }}" \
+            --app 1:500229648069:android:4ead8f325a7fd5e0ba4aac \
+            --groups "testers"
