@@ -1,9 +1,9 @@
-node_modules
-# Keep environment variables out of version control
+# Monorepo-wide safety net — each project (backend/, mobile/) also has its
+# own .gitignore for project-specific patterns.
 .env
-.claude/settings.local.json
-
-/src/generated/prisma
-/dist
-/coverage
+.env.local
+node_modules/
+dist/
+build/
+.DS_Store
 *.tsbuildinfo
