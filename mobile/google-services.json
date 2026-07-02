@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "500229648069",
+    "firebase_url": "https://cloudspace4u.firebaseio.com",
+    "project_id": "cloudspace4u",
+    "storage_bucket": "cloudspace4u.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500229648069:android:4ead8f325a7fd5e0ba4aac",
+        "android_client_info": {
+          "package_name": "com.rewardshub.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "500229648069-qknp7sd58t4jrm4a063ir1oee2jnf63s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABIG6S-uhe9DgfHDybkdYa6g-uR8XOCuQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "500229648069-qknp7sd58t4jrm4a063ir1oee2jnf63s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
