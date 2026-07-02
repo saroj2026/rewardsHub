@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import type { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
@@ -20,8 +20,8 @@ type Nav = CompositeNavigationProp<
 
 const quickActions = [
   { icon: "plus" as const, label: "Add Card", go: (n: Nav) => n.navigate("Cards", { screen: "AddCard" }) },
-  { icon: "search" as const, label: "Merchants", go: () => Alert.alert("Merchants", "Merchant search isn't available in this preview.") },
-  { icon: "bar-chart-2" as const, label: "Analytics", go: () => Alert.alert("Analytics", "Coming soon.") },
+  { icon: "search" as const, label: "Merchants", go: (n: Nav) => n.navigate("Merchants", { screen: "MerchantsList" }) },
+  { icon: "bar-chart-2" as const, label: "Analytics", go: (n: Nav) => n.navigate("Profile", { screen: "Analytics" }) },
   { icon: "tag" as const, label: "Offers", go: (n: Nav) => n.navigate("Offers", { screen: "OffersList" }) },
 ];
 
@@ -97,14 +97,14 @@ export function HomeScreen() {
           </View>
         </View>
 
-        {/* Merchant search (decorative) */}
-        <View style={styles.searchRow}>
+        {/* Merchant search */}
+        <Pressable style={styles.searchRow} onPress={() => navigation.navigate("Merchants", { screen: "MerchantsList" })}>
           <Feather name="search" size={16} color={colors.mutedForeground} />
           <Text style={styles.searchPlaceholder}>Where are you shopping?</Text>
           <View style={styles.searchScanBadge}>
             <Feather name="maximize" size={14} color={colors.mutedForeground} />
           </View>
-        </View>
+        </Pressable>
 
         {/* Quick actions */}
         <SectionLabel>Quick Actions</SectionLabel>

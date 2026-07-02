@@ -4,6 +4,7 @@ import { CardsStack } from "./CardsStack";
 import { OffersStack } from "./OffersStack";
 import { AssistantScreen } from "../screens/AssistantScreen";
 import { ProfileStack } from "./ProfileStack";
+import { MerchantsStack } from "./MerchantsStack";
 import { BottomTabBar } from "./BottomTabBar";
 import type { MainTabParamList } from "./types";
 
@@ -20,6 +21,7 @@ export function MainTabs() {
       <Tab.Screen name="Offers" component={OffersStack} />
       <Tab.Screen name="AI" component={AssistantScreen} />
       <Tab.Screen name="Profile" component={ProfileStack} />
+      <Tab.Screen name="Merchants" component={MerchantsStack} />
     </Tab.Navigator>
   );
 }

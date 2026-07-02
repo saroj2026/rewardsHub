@@ -12,6 +12,11 @@ export type OffersStackParamList = {
   OfferDetail: { offer: Offer };
 };
 
+export type MerchantsStackParamList = {
+  MerchantsList: undefined;
+  MerchantDetail: { merchantId: string };
+};
+
 export type ProfileStackParamList = {
   ProfileHome: undefined;
   Plans: undefined;
@@ -29,6 +34,7 @@ export type MainTabParamList = {
   Offers: NavigatorScreenParams<OffersStackParamList>;
   AI: undefined;
   Profile: NavigatorScreenParams<ProfileStackParamList>;
+  Merchants: NavigatorScreenParams<MerchantsStackParamList>;
 };
 
 export type RootStackParamList = {
