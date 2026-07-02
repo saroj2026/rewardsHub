@@ -3,7 +3,7 @@
 // Assumes prisma/seed-card-products.ts has already been run (offers link to
 // those card products by issuer + name; falls back to "any card" if not found).
 import "dotenv/config";
-import { PrismaClient } from "../generated/prisma/client";
+import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });

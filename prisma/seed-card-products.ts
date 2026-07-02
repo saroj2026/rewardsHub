@@ -1,7 +1,7 @@
 // Seeds the card_products catalog only — reference data, not user data.
 // Run with: npx tsx prisma/seed-card-products.ts
 import "dotenv/config";
-import { PrismaClient } from "../generated/prisma/client";
+import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
