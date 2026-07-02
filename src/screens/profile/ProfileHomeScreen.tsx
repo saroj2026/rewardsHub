@@ -13,6 +13,8 @@ import { getPremiumActive } from "../../lib/premium";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { signedOut } from "../../store/slices/userSlice";
 import { ScreenHeader } from "../../components/ScreenHeader";
+import { GradientCircle } from "../../components/GradientCircle";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import type { MainTabParamList, ProfileStackParamList, RootStackParamList } from "../../navigation/types";
 
 type Nav = CompositeNavigationProp<
@@ -63,9 +65,9 @@ export function ProfileHomeScreen() {
       <ScreenHeader title="Profile" onBack={() => navigation.navigate("Home")} />
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.avatarSection}>
-          <View style={styles.avatar}>
+          <GradientCircle size={80}>
             <Text style={styles.avatarText}>{initials}</Text>
-          </View>
+          </GradientCircle>
           <Text style={styles.name}>{displayName}</Text>
           {!user && <Text style={styles.email}>Not signed in</Text>}
           <View style={styles.iqBadge}>
@@ -131,12 +133,8 @@ export function ProfileHomeScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  content: { paddingHorizontal: 20, paddingTop: 16, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingTop: 16, paddingBottom: 40 + TAB_BAR_CLEARANCE },
   avatarSection: { alignItems: "center", marginBottom: 22 },
-  avatar: {
-    width: 80, height: 80, borderRadius: 24, backgroundColor: "rgba(0,245,255,0.2)",
-    borderWidth: 1, borderColor: colors.border, alignItems: "center", justifyContent: "center",
-  },
   avatarText: { fontSize: 24, fontWeight: "900", color: colors.foreground },
   name: { fontSize: 19, fontWeight: "800", color: colors.foreground, marginTop: 12 },
   email: { fontSize: 12, color: colors.mutedForeground, marginTop: 2 },

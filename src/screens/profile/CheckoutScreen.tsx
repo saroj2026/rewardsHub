@@ -7,6 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../../theme/colors";
 import { getPlanDuration, getPlanTier } from "../../lib/plans";
 import { setPremiumActive } from "../../lib/premium";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import type { ProfileStackParamList } from "../../navigation/types";
 
 type PayMethod = "card" | "upi" | "netbanking" | "wallet";
@@ -279,7 +280,7 @@ const styles = StyleSheet.create({
   walletText: { flex: 1, fontSize: 13, fontWeight: "600", color: colors.foreground },
   radio: { width: 16, height: 16, borderRadius: 8, borderWidth: 2, borderColor: colors.border },
   radioSelected: { borderColor: colors.accent, backgroundColor: colors.accent },
-  footer: { paddingHorizontal: 20, paddingBottom: 20, paddingTop: 12, borderTopWidth: 1, borderTopColor: colors.border },
+  footer: { paddingHorizontal: 20, paddingBottom: 20 + TAB_BAR_CLEARANCE, paddingTop: 12, borderTopWidth: 1, borderTopColor: colors.border },
   payBtn: { height: 52, borderRadius: 16, backgroundColor: colors.highlight, alignItems: "center", justifyContent: "center" },
   payBtnText: { fontSize: 14, fontWeight: "900", color: colors.highlightForeground },
   securedRow: { flexDirection: "row", justifyContent: "center", alignItems: "center", gap: 5, marginTop: 10 },

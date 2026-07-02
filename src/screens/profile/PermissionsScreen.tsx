@@ -7,6 +7,7 @@ import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../../theme/colors";
 import { ScreenHeader } from "../../components/ScreenHeader";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import type { ProfileStackParamList } from "../../navigation/types";
 
 const permissions = [
@@ -87,7 +88,7 @@ export function PermissionsScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  content: { paddingHorizontal: 20, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingBottom: 40 + TAB_BAR_CLEARANCE },
   subtitle: { fontSize: 13, color: colors.mutedForeground, marginBottom: 20, lineHeight: 18 },
   row: { flexDirection: "row", alignItems: "flex-start", gap: 12, padding: 16, borderRadius: 20, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border },
   iconWrap: { width: 40, height: 40, borderRadius: 14, backgroundColor: "rgba(255,255,255,0.06)", alignItems: "center", justifyContent: "center" },

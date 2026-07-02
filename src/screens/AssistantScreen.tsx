@@ -17,6 +17,7 @@ import { colors } from "../theme/colors";
 import { cards, offers, recommendCard } from "../lib/mock-data";
 import { chatWithAssistant } from "../lib/api-client";
 import { useAppSelector } from "../store/hooks";
+import { TAB_BAR_CLEARANCE } from "../theme/layout";
 import type { MainTabParamList } from "../navigation/types";
 
 type Message = { id: string; role: "user" | "assistant"; text: string };
@@ -202,7 +203,7 @@ const styles = StyleSheet.create({
   suggestionChip: { borderWidth: 1, borderColor: colors.border, backgroundColor: colors.surface, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 8 },
   suggestionText: { fontSize: 11, fontWeight: "600", color: "#d4d4d8" },
   inputRow: {
-    flexDirection: "row", alignItems: "center", gap: 6, marginHorizontal: 16, marginBottom: 16, marginTop: 4,
+    flexDirection: "row", alignItems: "center", gap: 6, marginHorizontal: 16, marginBottom: TAB_BAR_CLEARANCE, marginTop: 4,
     backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, borderRadius: 999, paddingLeft: 18, paddingRight: 6, height: 52,
   },
   input: { flex: 1, color: colors.foreground, fontSize: 14 },

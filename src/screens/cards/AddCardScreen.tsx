@@ -10,6 +10,7 @@ import { ScreenHeader } from "../../components/ScreenHeader";
 import { getCardProducts, addCard, type CardProduct } from "../../lib/api-client";
 import { formatCategory } from "../../lib/card-display";
 import { useAppSelector } from "../../store/hooks";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import type { CardsStackParamList } from "../../navigation/types";
 
 export function AddCardScreen() {
@@ -53,7 +54,7 @@ export function AddCardScreen() {
         <FlatList
           data={products}
           keyExtractor={(p) => p.id}
-          contentContainerStyle={{ padding: 20, gap: 12, paddingBottom: 40 }}
+          contentContainerStyle={{ padding: 20, gap: 12, paddingBottom: 40 + TAB_BAR_CLEARANCE }}
           ListEmptyComponent={<EmptyState title="No card catalog available" body="Check back later." />}
           renderItem={({ item }) => {
             const isAdding = addingId === item.id;

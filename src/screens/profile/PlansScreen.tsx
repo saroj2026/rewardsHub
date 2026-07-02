@@ -12,6 +12,7 @@ import {
   type PlanDurationMonths,
   type PlanTierKey,
 } from "../../lib/plans";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import type { ProfileStackParamList } from "../../navigation/types";
 
 const tierIcons: Record<PlanTierKey, { lib: "feather" | "ionicons"; name: string }> = {
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
   eyebrow: { fontSize: 10, fontWeight: "800", color: colors.accent, letterSpacing: 3 },
   h1: { fontSize: 20, fontWeight: "800", color: colors.foreground, marginTop: 4 },
   closeBtn: { width: 36, height: 36, borderRadius: 18, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, alignItems: "center", justifyContent: "center" },
-  content: { paddingHorizontal: 20, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingBottom: 40 + TAB_BAR_CLEARANCE },
   subtitle: { fontSize: 13, color: colors.mutedForeground, marginBottom: 20 },
   durationRow: { flexDirection: "row", gap: 8, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, borderRadius: 16, padding: 4, marginBottom: 24 },
   durationPill: { flex: 1, height: 56, borderRadius: 12, alignItems: "center", justifyContent: "center", gap: 2 },

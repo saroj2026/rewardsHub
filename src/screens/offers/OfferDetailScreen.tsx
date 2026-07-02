@@ -6,6 +6,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../../theme/colors";
 import { describeDiscount, expiresInLabel } from "../../lib/offer-display";
 import { ScreenHeader } from "../../components/ScreenHeader";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import type { OffersStackParamList } from "../../navigation/types";
 
 const steps = [
@@ -114,7 +115,7 @@ function InfoCard({ icon, label, value }: { icon: keyof typeof Feather.glyphMap;
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  content: { paddingHorizontal: 20, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingBottom: 40 + TAB_BAR_CLEARANCE },
   hero: {
     borderRadius: 24, padding: 20, marginBottom: 20, overflow: "hidden",
     backgroundColor: "rgba(165,255,0,0.1)", borderWidth: 1, borderColor: "rgba(165,255,0,0.3)",

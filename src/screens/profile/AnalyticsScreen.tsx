@@ -9,6 +9,7 @@ import { EmptyState } from "../../components/EmptyState";
 import { formatCategory } from "../../lib/card-display";
 import { getUserTransactions, type Card, type Transaction } from "../../lib/api-client";
 import { useAppSelector } from "../../store/hooks";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import type { ProfileStackParamList } from "../../navigation/types";
 
 const BAR_COLORS = [colors.highlight, colors.accent, "#8B5CF6", "#F97316", "#EC4899"];
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
   iconButton: { width: 40, height: 40, borderRadius: 20, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, alignItems: "center", justifyContent: "center" },
   headerCenter: { flexDirection: "row", alignItems: "center", gap: 8 },
   h1: { fontSize: 17, fontWeight: "800", color: colors.foreground },
-  content: { paddingHorizontal: 20, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingBottom: 40 + TAB_BAR_CLEARANCE },
   hero: { borderRadius: 24, padding: 20, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, marginBottom: 22, overflow: "hidden" },
   heroGlow: { position: "absolute", right: -30, top: -30, width: 120, height: 120, borderRadius: 60, backgroundColor: colors.highlight, opacity: 0.12 },
   heroLabel: { fontSize: 10, fontWeight: "700", color: colors.accent, letterSpacing: 2, marginBottom: 4 },

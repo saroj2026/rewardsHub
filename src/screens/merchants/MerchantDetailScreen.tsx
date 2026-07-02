@@ -17,6 +17,7 @@ import {
   type Offer,
 } from "../../lib/api-client";
 import { useAppSelector } from "../../store/hooks";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import type { MerchantsStackParamList } from "../../navigation/types";
 
 export function MerchantDetailScreen() {
@@ -175,7 +176,7 @@ export function MerchantDetailScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  content: { paddingHorizontal: 20, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingBottom: 40 + TAB_BAR_CLEARANCE },
   label: { fontSize: 10, fontWeight: "800", color: colors.mutedForeground, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 8 },
   amountRow: { flexDirection: "row", alignItems: "center", height: 56, borderRadius: 18, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, paddingHorizontal: 16, marginBottom: 20 },
   amountPrefix: { fontSize: 20, fontWeight: "800", color: colors.mutedForeground, marginRight: 6 },

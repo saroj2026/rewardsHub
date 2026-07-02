@@ -9,6 +9,7 @@ import { colors } from "../../theme/colors";
 import { EmptyState } from "../../components/EmptyState";
 import { getLiveOffers, type Offer } from "../../lib/api-client";
 import { describeDiscount, expiresInLabel } from "../../lib/offer-display";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import type { OffersStackParamList, MainTabParamList } from "../../navigation/types";
 
 const categories = ["All", "Dining", "Travel", "Shopping", "Entertainment", "Fuel"] as const;
@@ -89,7 +90,7 @@ export function OffersListScreen() {
         <FlatList
           data={list}
           keyExtractor={(o) => o.id}
-          contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 100, gap: 12 }}
+          contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: TAB_BAR_CLEARANCE + 20, gap: 12 }}
           ListEmptyComponent={
             <EmptyState title="No offers in this category" body="Check back soon, or browse a different category above." />
           }

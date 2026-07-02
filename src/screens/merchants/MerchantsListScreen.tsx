@@ -8,6 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../../theme/colors";
 import { EmptyState } from "../../components/EmptyState";
 import { getMerchants, type Merchant } from "../../lib/api-client";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import type { MerchantsStackParamList, MainTabParamList } from "../../navigation/types";
 
 const categories = ["All", "Dining", "Travel", "Shopping", "Entertainment", "Fuel"];
@@ -79,7 +80,7 @@ export function MerchantsListScreen() {
         <FlatList
           data={filtered}
           keyExtractor={(m) => m.id}
-          contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 40, gap: 10 }}
+          contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 40 + TAB_BAR_CLEARANCE, gap: 10 }}
           ListEmptyComponent={
             <EmptyState
               title={merchants.length === 0 ? "No merchants in the catalog yet" : "No matches"}

@@ -8,6 +8,7 @@ import type { CompositeNavigationProp } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../../theme/colors";
 import { ScreenHeader } from "../../components/ScreenHeader";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import type { MainTabParamList, ProfileStackParamList } from "../../navigation/types";
 
 const faqs = [
@@ -113,7 +114,7 @@ function ContactRow({
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  content: { paddingHorizontal: 20, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingBottom: 40 + TAB_BAR_CLEARANCE },
   aiCard: {
     flexDirection: "row", alignItems: "center", gap: 12, padding: 16, borderRadius: 20, marginBottom: 22,
     backgroundColor: "rgba(165,255,0,0.08)", borderWidth: 1, borderColor: "rgba(165,255,0,0.3)",

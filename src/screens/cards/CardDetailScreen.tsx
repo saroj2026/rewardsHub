@@ -17,6 +17,7 @@ import {
   type Transaction,
 } from "../../lib/api-client";
 import { useAppSelector } from "../../store/hooks";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import { ScreenHeader } from "../../components/ScreenHeader";
 import type { CardsStackParamList } from "../../navigation/types";
 
@@ -231,7 +232,7 @@ function StatBox({ icon, label, value, highlight }: { icon: keyof typeof Feather
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  content: { paddingHorizontal: 20, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingBottom: 40 + TAB_BAR_CLEARANCE },
   statsRow: { flexDirection: "row", gap: 10, marginBottom: 20 },
   statBox: { flex: 1, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, borderRadius: 16, padding: 12 },
   statLabel: { fontSize: 9, color: colors.mutedForeground, letterSpacing: 1, marginBottom: 4, textTransform: "uppercase" },

@@ -7,6 +7,7 @@ import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../../theme/colors";
 import { ScreenHeader } from "../../components/ScreenHeader";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import type { ProfileStackParamList } from "../../navigation/types";
 
 type BiometricMethod = "fingerprint" | "face";
@@ -141,7 +142,7 @@ function MethodOption({
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  content: { paddingHorizontal: 20, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingBottom: 40 + TAB_BAR_CLEARANCE },
   lockRow: { flexDirection: "row", alignItems: "flex-start", gap: 12, padding: 16, borderRadius: 20, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, marginBottom: 22 },
   lockIconWrap: { width: 40, height: 40, borderRadius: 14, backgroundColor: "rgba(0,245,255,0.15)", alignItems: "center", justifyContent: "center" },
   lockTitle: { fontSize: 13, fontWeight: "700", color: colors.foreground },

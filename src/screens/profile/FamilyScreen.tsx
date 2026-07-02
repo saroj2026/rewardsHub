@@ -8,6 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../../theme/colors";
 import { ScreenHeader } from "../../components/ScreenHeader";
 import { familyMembers } from "../../lib/mock-data";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import type { ProfileStackParamList } from "../../navigation/types";
 
 const INVITE_CODE = "RIQ-7F3K9";
@@ -96,7 +97,7 @@ export function FamilyScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  content: { paddingHorizontal: 20, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingBottom: 40 + TAB_BAR_CLEARANCE },
   hero: { borderRadius: 24, padding: 20, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, marginBottom: 22 },
   heroLabel: { fontSize: 10, color: colors.mutedForeground, letterSpacing: 2, marginBottom: 6 },
   heroValue: { fontSize: 30, fontWeight: "900", color: colors.foreground, letterSpacing: -1 },

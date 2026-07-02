@@ -11,6 +11,7 @@ import { EmptyState } from "../../components/EmptyState";
 import { toCardFace, bestRewardRate, bestRewardCategory, sumActivePoints } from "../../lib/card-display";
 import { getUserCards, type Card } from "../../lib/api-client";
 import { useAppSelector } from "../../store/hooks";
+import { TAB_BAR_CLEARANCE } from "../../theme/layout";
 import type { CardsStackParamList, MainTabParamList } from "../../navigation/types";
 
 type Nav = CompositeNavigationProp<
@@ -71,7 +72,7 @@ export function CardsListScreen() {
         <FlatList
           data={cards}
           keyExtractor={(c) => c.id}
-          contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 100, gap: 20 }}
+          contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: TAB_BAR_CLEARANCE + 20, gap: 20 }}
           ListEmptyComponent={
             <EmptyState title="No cards linked yet" body="Link a card to start tracking rewards and getting AI recommendations." />
           }

@@ -32,6 +32,7 @@ export function SignInScreen() {
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
   const confirmationRef = useRef<FirebaseAuthTypes.ConfirmationResult | null>(null);
+  const otpInputRef = useRef<TextInput>(null);
 
   const enterMain = () => navigation.replace("Main");
 
@@ -79,7 +80,7 @@ export function SignInScreen() {
               <View style={styles.badgeGlowAccent} />
               <View style={styles.badgeGlowHighlight} />
               <View style={styles.badge}>
-                <Ionicons name="sparkles" size={32} color={colors.accent} />
+                <Ionicons name="sparkles" size={32} color={colors.highlight} />
               </View>
               <View style={[styles.satellite, { top: 0, right: 0 }]}>
                 <Feather name="phone" size={14} color={colors.highlight} />
@@ -128,13 +129,24 @@ export function SignInScreen() {
                 <Text style={styles.backRowText}>+91 {phone}</Text>
               </Pressable>
               <Text style={styles.label}>Enter the 6-digit code</Text>
+              <Pressable style={styles.otpRow} onPress={() => otpInputRef.current?.focus()}>
+                {Array.from({ length: 6 }).map((_, i) => {
+                  const filled = i < otp.length;
+                  const active = i === otp.length;
+                  return (
+                    <View key={i} style={[styles.otpBox, active && styles.otpBoxActive, filled && styles.otpBoxFilled]}>
+                      <Text style={styles.otpDigit}>{otp[i] ?? ""}</Text>
+                    </View>
+                  );
+                })}
+              </Pressable>
               <TextInput
+                ref={otpInputRef}
                 value={otp}
                 onChangeText={(t) => setOtp(t.replace(/\D/g, "").slice(0, 6))}
-                placeholder="••••••"
-                placeholderTextColor={colors.mutedForeground}
                 keyboardType="number-pad"
-                style={[styles.input, styles.otpInput]}
+                autoFocus
+                style={styles.otpHiddenInput}
               />
               <Pressable
                 onPress={verifyOtp}
@@ -187,7 +199,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 40,
-    backgroundColor: "rgba(0,245,255,0.15)",
+    backgroundColor: "rgba(165,255,0,0.15)",
     borderWidth: 1,
     borderColor: colors.border,
     alignItems: "center",
@@ -221,17 +233,21 @@ const styles = StyleSheet.create({
   },
   prefix: { color: colors.mutedForeground, fontWeight: "700", fontSize: 14 },
   input: { flex: 1, color: colors.foreground, fontSize: 15, fontFamily: Platform.select({ android: "monospace", ios: "Menlo" }) },
-  otpInput: {
-    height: 52,
+  otpRow: { flexDirection: "row", justifyContent: "space-between", gap: 8 },
+  otpBox: {
+    flex: 1,
+    height: 60,
     borderRadius: 16,
     backgroundColor: colors.surface,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: colors.border,
-    paddingHorizontal: 16,
-    fontSize: 20,
-    letterSpacing: 8,
-    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
   },
+  otpBoxActive: { borderColor: colors.highlight },
+  otpBoxFilled: { borderColor: "rgba(165,255,0,0.4)", backgroundColor: "rgba(165,255,0,0.06)" },
+  otpDigit: { fontSize: 24, fontWeight: "900", color: colors.foreground },
+  otpHiddenInput: { position: "absolute", width: 1, height: 1, opacity: 0 },
   cta: {
     height: 52,
     borderRadius: 16,

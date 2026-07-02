@@ -9,28 +9,30 @@ import {
   Text,
   View,
 } from "react-native";
-import { Feather } from "@expo/vector-icons";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../theme/colors";
 import type { RootStackParamList } from "../navigation/types";
+import CreditCardImg from "../assets/images/credit-card.svg";
+import ChooseCardImg from "../assets/images/choose-card.svg";
+import GiftCardImg from "../assets/images/gift-card.svg";
 
 const { width } = Dimensions.get("window");
 
 const slides = [
   {
-    icon: "credit-card" as const,
+    Image: CreditCardImg,
     title: "One Wallet.\nEvery Card.",
     body: "Bring all your credit cards into a single, intelligent wallet — track points and value in one place.",
   },
   {
-    icon: "cpu" as const,
+    Image: ChooseCardImg,
     title: "AI Picks Your\nBest Card",
     body: "Tell RewardIQ where you're spending and it instantly recommends the card that earns you the most back.",
   },
   {
-    icon: "gift" as const,
+    Image: GiftCardImg,
     title: "Never Miss\na Reward",
     body: "Get alerted before points expire, and see every live offer across your cards in real time.",
   },
@@ -75,11 +77,9 @@ export function OnboardingScreen() {
       >
         {slides.map((slide, i) => (
           <View key={i} style={[styles.slide, { width }]}>
-            <View style={styles.iconWrap}>
-              <View style={styles.iconGlow} />
-              <View style={styles.iconBadge}>
-                <Feather name={slide.icon} size={44} color={colors.highlight} />
-              </View>
+            <View style={styles.imageWrap}>
+              <View style={styles.imageGlow} />
+              <slide.Image width="100%" height="100%" preserveAspectRatio="xMidYMid meet" />
             </View>
             <Text style={styles.slideTitle}>{slide.title}</Text>
             <Text style={styles.slideBody}>{slide.body}</Text>
@@ -107,24 +107,14 @@ const styles = StyleSheet.create({
   skipRow: { alignItems: "flex-end", paddingHorizontal: 24, paddingTop: 8 },
   skipText: { color: colors.mutedForeground, fontSize: 13, fontWeight: "600" },
   slide: { alignItems: "center", justifyContent: "center", paddingHorizontal: 32, gap: 24 },
-  iconWrap: { width: 160, height: 160, alignItems: "center", justifyContent: "center" },
-  iconGlow: {
+  imageWrap: { width: "100%", maxWidth: 260, aspectRatio: 1, alignItems: "center", justifyContent: "center" },
+  imageGlow: {
     position: "absolute",
-    width: 160,
-    height: 160,
-    borderRadius: 80,
-    backgroundColor: colors.accent,
+    width: "100%",
+    height: "100%",
+    borderRadius: 999,
+    backgroundColor: colors.highlight,
     opacity: 0.12,
-  },
-  iconBadge: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-    alignItems: "center",
-    justifyContent: "center",
   },
   slideTitle: {
     fontSize: 26,

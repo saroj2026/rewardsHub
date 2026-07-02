@@ -11,6 +11,7 @@ import { CreditCardVisual } from "../components/CreditCardVisual";
 import { toCardFace, sumActivePoints } from "../lib/card-display";
 import { getUserCards, getLiveOffers, getUserTransactions, type Card, type Offer, type Transaction } from "../lib/api-client";
 import { useAppSelector } from "../store/hooks";
+import { TAB_BAR_CLEARANCE } from "../theme/layout";
 import type { MainTabParamList, RootStackParamList } from "../navigation/types";
 
 type Nav = CompositeNavigationProp<
@@ -274,7 +275,7 @@ function EmptyRow({ text }: { text: string }) {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
   scroll: { flex: 1 },
-  scrollContent: { paddingHorizontal: 20, paddingTop: 8, paddingBottom: 40 },
+  scrollContent: { paddingHorizontal: 20, paddingTop: 8, paddingBottom: 40 + TAB_BAR_CLEARANCE },
   header: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 20 },
   eyebrow: { fontSize: 10, fontWeight: "800", color: colors.accent, letterSpacing: 3 },
   h1: { fontSize: 21, fontWeight: "800", color: colors.foreground, marginTop: 2 },
