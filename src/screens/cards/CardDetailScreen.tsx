@@ -66,6 +66,10 @@ export function CardDetailScreen() {
   };
 
   const handleRemove = () => {
+    if (!userId) {
+      Alert.alert("Sign in required", "Sign in to manage your linked cards.");
+      return;
+    }
     Alert.alert(
       `Remove ${card.cardProduct.name}?`,
       "This unlinks the card from your wallet. Its reward balance, offers, and history will no longer show in RewardIQ.",
